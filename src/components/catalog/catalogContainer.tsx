@@ -11,16 +11,16 @@ const CatalogContainer = () => {
 
     useEffect(() => {
         dispatch(fetchCatalog())
-        console.log(catalog)
-    }, [])
 
+    }, [])
+    console.log(catalog)
     if (!loading) {
         return <h4>Загрузка...</h4>
     }
 
     return (
         <>
-            <Catalog/>
+            <Catalog catalog={catalog}/>
         </>
     );
 };

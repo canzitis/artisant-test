@@ -10,13 +10,17 @@ export const catalogReducer = (state = initialState, action: ActionTypes): State
             debugger
             return {
                 ...state,
-                catalog: action.catalog,
+                catalog: [...action.catalog],
                 loading: true
             }
         case CatalogActionTypes.SET_LOADING:
             return {
                 ...state,
                 loading: action.loading
+            }
+        case CatalogActionTypes.FILTER_PRODUCT:
+            return {
+                ...state
             }
 
         default:
