@@ -1,29 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {CatalogPropsType} from "../../types/catalog";
 import s from './catalog.module.scss'
 // @ts-ignore
 import backgroundImg from '../../img/backgaroundImg.png'
+import Filter from "./filter/filter";
 
 
 const Catalog: React.FC<CatalogPropsType> = ({catalog}) => {
 
-
-    const filterData = () => {
-
-    }
+    const [filter, setFilter] = useState<boolean>(false)
 
     return (<div className={s.container}>
             <h4>Explore</h4>
             <p>Buy and sell digital fashion NFT art</p>
-            <button className={s.filterButton} onClick={() => {
-                filterData()
-            }}>Отфилтровать по количеству
-            </button>
+            <Filter setFilter={setFilter} filter={filter}/>
             <div className={s.catalogGridWrapper}>
                 {catalog.map((item: any) => {
-                    return <div key={item.user_id}
-                                className={s.catalogGridItem}>
-
+                    return <div key={item.product_id}
+                                className={filter && item.quantity_available === 0
+                                    ? s.catalogGridItemNone
+                                    : s.catalogGridItem}>
                         <div className={s.containerText}>
                             <img src={backgroundImg} alt=""/>
                             <div className={s.descriptionCatalog}>
@@ -36,14 +32,6 @@ const Catalog: React.FC<CatalogPropsType> = ({catalog}) => {
                                     <span>Digital Addiction</span>
                                     <span>{item.name}</span>
                                 </div>
-
-
-                                {/*   {item.json_nft_data.attributes.map((a: any) => {
-                                    return <div>
-                                        <span key={a.value}>{a.value}</span>
-                                        <span>{a.trait_type}</span>
-                                    </div>
-                                })}*/}
                             </div>
                         </div>
                         <div className={s.availableAndPriceWrapper}>
@@ -62,5 +50,4 @@ const Catalog: React.FC<CatalogPropsType> = ({catalog}) => {
         </div>
     );
 };
-
 export default Catalog;

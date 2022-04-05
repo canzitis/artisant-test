@@ -28,5 +28,10 @@ export type ActionTypes = FetchCatalogAction | SetLoadingAction | FilterProduct
 
 
 export interface CatalogPropsType {
-    catalog: any
+    catalog: any[]
+}
+
+export interface FilterDataType {
+    setFilter: (a: boolean) => void,
+    filter: boolean
 }

@@ -9,15 +9,9 @@ export const fetchCatalog = () => {
     return async (dispatch: Dispatch<ActionTypes>) => {
         try {
             const response = await axios.get(`${instanceAPI.baseURL}`)
-            debugger;
             dispatch({type: CatalogActionTypes.FETCH_CATALOG, catalog: response.data.data.products})
         } catch (error) {
             console.log(error)
         }
     }
-}
-
-
-export const filterProduct = (dispatch: Dispatch<ActionTypes>) => {
-    dispatch({type: CatalogActionTypes.FILTER_PRODUCT})
 }

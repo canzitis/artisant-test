@@ -7,7 +7,6 @@ const initialState: StateType = {
 export const catalogReducer = (state = initialState, action: ActionTypes): StateType => {
     switch (action.type) {
         case CatalogActionTypes.FETCH_CATALOG:
-            debugger
             return {
                 ...state,
                 catalog: [...action.catalog],
@@ -18,11 +17,6 @@ export const catalogReducer = (state = initialState, action: ActionTypes): State
                 ...state,
                 loading: action.loading
             }
-        case CatalogActionTypes.FILTER_PRODUCT:
-            return {
-                ...state
-            }
-
         default:
             return state
     }

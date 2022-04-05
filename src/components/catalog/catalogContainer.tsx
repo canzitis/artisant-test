@@ -3,6 +3,7 @@ import {useTypeSelectors} from "../../hooks/useTypeSelectors";
 import Catalog from "./catalog";
 import {useDispatch} from "react-redux";
 import {fetchCatalog} from "../../store/action-creators/catalog";
+import Preloader from "../preloader/preloader";
 
 const CatalogContainer = () => {
     const {catalog, loading} = useTypeSelectors(state => state.catalog)
@@ -11,11 +12,11 @@ const CatalogContainer = () => {
 
     useEffect(() => {
         dispatch(fetchCatalog())
-
     }, [])
-    console.log(catalog)
+
+
     if (!loading) {
-        return <h4>Загрузка...</h4>
+        return <Preloader/>
     }
 
     return (
